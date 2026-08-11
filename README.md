@@ -1,5 +1,5 @@
-*Inception project as a part of 42 Warsaw core curriculum made by iskaraag*
-*This project's been created as part of 42 cirriculm by iskaraag*
+#Inception
+*This project has been created as part of 42 core cirriculm by iskaraag*
 
 ## Table of contents
 - [Description](#description)
