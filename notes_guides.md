@@ -75,7 +75,7 @@ Important files used by the project:
 
 ## 15. WordPress configuration
 
-The project uses WP-CLI in `srcs/requirements/wordpress/tools/wp_setup.sh` to install WordPress and create admin/user accounts during container startup. Check that `https://iskaraag.42.fr/wp-admin` loads and login with the admin credentials from `secrets/wp_admin_password.txt`.
+The project uses WP-CLI in `srcs/requirements/wordpress/tools/wp_setup.sh` to install WordPress and create admin/user accounts during container startup. Check that `https://<login>.42.fr/wp-admin` loads and login with the admin credentials from `secrets/wp_admin_password.txt`.
 
 
 ## 16. The database connection
@@ -115,14 +115,14 @@ All three containers should be `Up`:
 ### 17.4 Verify HTTPS access
 
 Open the browser at:
-- `https://iskaraag.42.fr`
-- `https://iskaraag.42.fr/wp-admin`
+- `https://<login>.42.fr`
+- `https://<login>.42.fr/wp-admin`
 
 
 ### 17.5 Validate TLS protocol
 
 ```bash
-openssl s_client -connect iskaraag.42.fr:443 -servername iskaraag.42.fr </dev/null | grep "Protocol\|Cipher\|Verify return code"
+openssl s_client -connect <login>.42.fr:443 -servername <login>.42.fr </dev/null | grep "Protocol\|Cipher\|Verify return code"
 ```
 
 Expected TLS version: TLSv1.2 or TLSv1.3.
@@ -144,7 +144,7 @@ docker exec -it wordpress cat /run/secrets/wp_admin_password
 
 ### 17.7 Validate WordPress installation
 
-- Open the admin login at `https://iskaraag.42.fr/wp-admin`.
+- Open the admin login at `https://<login>.42.fr/wp-admin`.
 - Use the admin username and password from `secrets/wp_admin_password.txt`.
 - Verify the WordPress dashboard loads correctly.
 

@@ -3,6 +3,7 @@ This file is for user who wants have Inception for simpel usage. For technical p
 
 ## Table of contents
 - [Provided Services](#provided-services)
+- [Prerequisites Before Starting](#prerequisites-before-starting)
 - [Starting and Stopping the Project](#starting-and-stopping-the-project)
 - [Accessing the Website and Administration Panel](#accessing-the-website-and-administration-panel)
 - [Locating and Managing Credentials](#locating-and-managing-credentials)
@@ -14,6 +15,18 @@ This infrastructure provides three core isolated services running inside Docker 
 - **NGINX:** Acts as the primary web server and secure reverse proxy, handling HTTPS connections exclusively over port 443 with TLSv1.2 or TLSv1.3 protocols.
 - **WordPress + PHP-FPM:** Houses the WordPress core site files and processes PHP scripts. It does not run a web server inside its container and communicates with NGINX via port 9000.
 - **MariaDB:** Serves as the relational database backend storing all WordPress website content, options, and user data, accessible on port 3306.
+
+## Prerequisites Before Starting
+
+- **Secrets Directory:** Create a directory named `secrets`(renamed from `secrets_sample`) containing all required secret files:
+```bash
+secrets/db_root_password.txt
+secrets/db_password.txt
+secrets/wp_admin_password.txt
+secrets/wp_user_password.txt
+```
+- **Environment Configuration:** Create a `.env` file (renamed from `env_sample`) and populate it with all necessary environment variables.
+- **Placeholder Updates:** Replace all `login` placeholders throughout the files with an appropriate login username.
 
 ## Starting and Stopping the Project
 All service management is handled via the top-level Makefile:
@@ -31,8 +44,8 @@ make fclean     # clean and wipe images/volumes and wipe data directories
 ## Accessing the Website and Administration Panel
 
 Make sure the project is running (`make` was successfully).
-- **Public Website:** Open your browser and navigate to https://iskaraag.42.fr
-- **WordPress Admin Panel:** Navigate to https://iskaraag.42.fr/wp-admin
+- **Public Website:** Open your browser and navigate to https://<login>.42.fr
+- **WordPress Admin Panel:** Navigate to https://<login>.42.fr/wp-admin
 - ***Note:*** *Because the SSL certificate is self-signed, your browser will display a security warning. Select "Advanced" and accept the risk to proceed to the site.*
 
 ## Locating and Managing Credentials

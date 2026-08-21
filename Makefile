@@ -1,8 +1,8 @@
 all: up
 
 up: build
-	@mkdir -p /home/iskaraag/data/wordpress
-	@mkdir -p /home/iskaraag/data/mariadb
+	@mkdir -p /home/<login>/data/wordpress
+	@mkdir -p /home/<login>/data/mariadb
 	docker compose -f srcs/docker-compose.yml up -d
 
 build:
@@ -31,8 +31,8 @@ clean: down
 	docker system prune -a --force
 
 fclean: clean
-	@sudo rm -rf /home/iskaraag/data/wordpress/*
-	@sudo rm -rf /home/iskaraag/data/mariadb/*
+	@sudo rm -rf /home/<login>/data/wordpress/*
+	@sudo rm -rf /home/<login>/data/mariadb/*
 	docker volume rm $$(docker volume ls -q) 2>/dev/null || true
 
 re: fclean all

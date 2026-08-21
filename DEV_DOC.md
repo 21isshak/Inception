@@ -4,6 +4,7 @@ This file is for someone who wants to set the project up to build on it or debug
 
 ## Table of contents
 - [Infrastructure Overview](#infrastructure-overview)
+- [Prerequisites Before Starting & Environment Setup](#prerequisites-before-starting--environment-setup)
 - [Prerequisites & Environment Setup](#prerequisites--environment-setup)
 - [Build and Deployment Lifecycle](#build-and-deployment-lifecycle)
 - [Debugging and Operational Commands](#debugging-and-operational-commands)
@@ -15,8 +16,19 @@ This project uses Docker Compose to orchestrate three custom Debian-based contai
 - **wordpress**: PHP-FPM application server running WP-CLI auto-configuration.
 - **mariadb**: Database backend configured with secure user permissions and isolated secrets.
 
-## Prerequisites & Environment Setup
-Ensure the following components are available on the host:
+## Prerequisites Before Starting & Environment Setup
+
+- **Secrets Directory:** Create a directory named `secrets`(renamed from `secrets_sample`) containing all required secret files:
+```bash
+secrets/db_root_password.txt
+secrets/db_password.txt
+secrets/wp_admin_password.txt
+secrets/wp_user_password.txt
+```
+- **Environment Configuration:** Create a `.env` file (renamed from `env_sample`) and populate it with all necessary environment variables.
+- **Placeholder Updates:** Replace all `login` placeholders throughout the files with an appropriate login username.
+
+**Ensure the following components are available on the host:**
 - Docker Engine & Docker Compose V2
 - GNU Make
 - Domain mapping in `/etc/hosts`: `127.0.0.1 <login>.42.fr`
